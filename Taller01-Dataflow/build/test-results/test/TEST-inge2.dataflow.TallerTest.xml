@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="inge2.dataflow.TallerTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2024-09-09T18:20:50" hostname="Natans-computer" time="1.089">
+  <properties/>
+  <testcase name="testTarget1()" classname="inge2.dataflow.TallerTest" time="0.478"/>
+  <testcase name="testTarget2()" classname="inge2.dataflow.TallerTest" time="0.122"/>
+  <testcase name="testTarget3()" classname="inge2.dataflow.TallerTest" time="0.117"/>
+  <testcase name="testTarget4()" classname="inge2.dataflow.TallerTest" time="0.102"/>
+  <testcase name="testTarget5()" classname="inge2.dataflow.TallerTest" time="0.107"/>
+  <testcase name="testTarget6()" classname="inge2.dataflow.TallerTest" time="0.094"/>
+  <testcase name="testTarget7()" classname="inge2.dataflow.TallerTest" time="0.063"/>
+  <system-out><![CDATA[Soot started on Mon Sep 09 15:20:51 ART 2024
+perrrrrrrrrrrro
+zero
+Soot finished on Mon Sep 09 15:20:51 ART 2024
+Soot has run for 0 min. 0 sec.
+Soot started on Mon Sep 09 15:20:51 ART 2024
+Soot finished on Mon Sep 09 15:20:51 ART 2024
+Soot has run for 0 min. 0 sec.
+Soot started on Mon Sep 09 15:20:51 ART 2024
+perrrrrrrrrrrro
+zero
+Soot finished on Mon Sep 09 15:20:51 ART 2024
+Soot has run for 0 min. 0 sec.
+Soot started on Mon Sep 09 15:20:51 ART 2024
+perrrrrrrrrrrro
+zero
+perrrrrrrrrrrro
+not-zero
+Soot finished on Mon Sep 09 15:20:51 ART 2024
+Soot has run for 0 min. 0 sec.
+Soot started on Mon Sep 09 15:20:51 ART 2024
+perrrrrrrrrrrro
+not-zero
+perrrrrrrrrrrro
+not-zero
+Soot finished on Mon Sep 09 15:20:51 ART 2024
+Soot has run for 0 min. 0 sec.
+Soot started on Mon Sep 09 15:20:51 ART 2024
+perrrrrrrrrrrro
+not-zero
+perrrrrrrrrrrro
+not-zero
+Soot finished on Mon Sep 09 15:20:51 ART 2024
+Soot has run for 0 min. 0 sec.
+Soot started on Mon Sep 09 15:20:51 ART 2024
+perrrrrrrrrrrro
+zero
+perrrrrrrrrrrro
+not-zero
+perrrrrrrrrrrro
+not-zero
+Soot finished on Mon Sep 09 15:20:52 ART 2024
+Soot has run for 0 min. 0 sec.
+]]></system-out>
+  <system-err><![CDATA[[Thread-6] ERROR inge2.dataflow.Launcher - Found a possible division by zero in line 7
+[Thread-10] ERROR inge2.dataflow.Launcher - Found a possible division by zero in line 7
+[Thread-14] ERROR inge2.dataflow.Launcher - Found a possible division by zero in line 6
+[Thread-18] ERROR inge2.dataflow.Launcher - Found a possible division by zero in line 11
+[Thread-30] ERROR inge2.dataflow.Launcher - Found a possible division by zero in line 7
+]]></system-err>
+</testsuite>
