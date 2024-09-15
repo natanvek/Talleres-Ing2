@@ -17,51 +17,57 @@ public class StackAr {
      */
     private int top = -1;
 
-    //@ TODO: ESPECIFICAR
+    //@ requires true;
     public StackAr() {
         this(DEFAULT_CAPACITY);
     }
 
-    //@ TODO: ESPECIFICAR
+    //@ requires capacity > 0;
     public StackAr(int capacity) {
-        // TODO: IMPLEMENTAR
-        throw new UnsupportedOperationException("Not implemented yet");
+        elems = new int[capacity];
     }
 
-    //@ TODO: ESPECIFICAR
+    //@ pure;
+    //@ requires true;
+    //@ ensures \result == (top == -1);
     public boolean isEmpty() {
-        // TODO: IMPLEMENTAR
-        throw new UnsupportedOperationException("Not implemented yet");
+        return top == -1;
     }
 
-    //@ TODO: ESPECIFICAR
+    //@ pure;
+    //@ requires true;
+    //@ ensures \result == (top == elems.length - 1);
     public boolean isFull() {
-        // TODO: IMPLEMENTAR
-        throw new UnsupportedOperationException("Not implemented yet");
+        return top == elems.length - 1;
     }
 
-    //@ TODO: ESPECIFICAR
+    //@ pure;
+    //@ requires true;
+    //@ ensures \result == (top + 1);
     public int size() {
-        // TODO: IMPLEMENTAR
-        throw new UnsupportedOperationException("Not implemented yet");
+        return top + 1;
     }
 
-    //@ TODO: ESPECIFICAR
+    //@ pure;
+    //@ requires !isFull();
+    //@ ensures top == \old(top) + 1;
+    //@ ensures elems[top] == o;
     public void push(int o) {
-        // TODO: IMPLEMENTAR
-        throw new UnsupportedOperationException("Not implemented yet");
+        elems[++top] = o;
     }
 
-    //@ TODO: ESPECIFICAR
+    //@ requires !isEmpty();
+    //@ ensures \result == elems[top];
+    //@ ensures top == \old(top) - 1;
     public int pop() {
-        // TODO: IMPLEMENTAR
-        throw new UnsupportedOperationException("Not implemented yet");
+        return elems[top--];
     }
 
-    //@ TODO: ESPECIFICAR
+    //@ pure;
+    //@ requires !isEmpty();
+    //@ ensures \result == elems[top];
     public int peek() {
-        // TODO: IMPLEMENTAR
-        throw new UnsupportedOperationException("Not implemented yet");
+        return elems[top];
     }
 }
 

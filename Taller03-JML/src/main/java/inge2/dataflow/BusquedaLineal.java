@@ -4,7 +4,9 @@ public class BusquedaLineal {
 
     // Busca un elemento en un arreglo de enteros.
     //
-    //@ TODO: ESPECIFICAR
+    //@ pure;
+    //@ requires true;
+    //@ ensures \result == (\exists int i; 0 <= i && i < arr.length; arr[i] == elem);
     public static boolean busquedaLineal(int elem, int[] arr) {
         boolean result = false;
 
