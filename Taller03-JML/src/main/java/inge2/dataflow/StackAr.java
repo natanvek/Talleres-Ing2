@@ -17,7 +17,6 @@ public class StackAr {
      */
     private int top = -1;
 
-    //@ requires true;
     public StackAr() {
         this(DEFAULT_CAPACITY);
     }
@@ -28,50 +27,42 @@ public class StackAr {
     }
 
     //@ pure;
-    //@ requires true;
-    //@ ensures \result == (top == -1);
     public boolean isEmpty() {
         return top == -1;
     }
 
     //@ pure;
-    //@ requires true;
-    //@ ensures \result == (top == elems.length - 1);
     public boolean isFull() {
         return top == elems.length - 1;
     }
 
     //@ pure;
-    //@ requires true;
-    //@ ensures \result == (top + 1);
     public int size() {
         return top + 1;
     }
 
-    //@ pure;
-    //@ requires !isFull();
-    //@ ensures top == \old(top) + 1;
-    //@ ensures elems[top] == o;
-    //@ ensures (\forall int i; 0 <= i < top; elems[i] == \old(elems[i]))
+    //@ requires this.top < this.elems.length - 1;
+    //@ ensures this.top == \old(this.top) + 1;
+    //@ ensures this.elems[this.top] == o;
+    //@ ensures (\forall int i; 0 <= i < this.top; this.elems[i] == \old(this.elems[i]))
     public void push(int o) {
         elems[++top] = o;
     }
 
-    //@ requires !isEmpty();
-    //@ ensures \result == elems[top];
-    //@ ensures top == \old(top) - 1;
-    //@ ensures (\forall int i; 0 <= i <= top; elems[i] == \old(elems[i]))
+    //@ requires 0 <= this.top;
+    //@ ensures \result == this.elems[this.top];
+    //@ ensures this.top == \old(this.top) - 1;
+    //@ ensures (\forall int i; 0 <= i <= this.top; this.elems[i] == \old(this.elems[i]))
     public int pop() {
         return elems[top--];
     }
 
     //@ pure;
-    //@ requires !isEmpty();
-    //@ ensures \result == elems[top];
+    //@ requires this.top >= 0;
+    //@ ensures \result == this.elems[this.top];
     public int peek() {
         return elems[top];
     }
 }
-
 
 
