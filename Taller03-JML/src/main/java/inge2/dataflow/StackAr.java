@@ -52,6 +52,7 @@ public class StackAr {
     //@ requires !isFull();
     //@ ensures top == \old(top) + 1;
     //@ ensures elems[top] == o;
+    //@ ensures (\forall int i; 0 <= i < top; elems[i] == \old(elems[i]))
     public void push(int o) {
         elems[++top] = o;
     }
@@ -59,6 +60,7 @@ public class StackAr {
     //@ requires !isEmpty();
     //@ ensures \result == elems[top];
     //@ ensures top == \old(top) - 1;
+    //@ ensures (\forall int i; 0 <= i <= top; elems[i] == \old(elems[i]))
     public int pop() {
         return elems[top--];
     }
@@ -70,4 +72,6 @@ public class StackAr {
         return elems[top];
     }
 }
+
+
 

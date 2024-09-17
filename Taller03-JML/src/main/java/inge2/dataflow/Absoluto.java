@@ -6,7 +6,7 @@ public class Absoluto {
     // Si el número es negativo, devuelve el opuesto.
     //
     //@ requires n > Integer.MIN_VALUE;
-    //@ ensures (n < 0 ==> \result == -n) & (n >= 0 ==> \result == n);
+    //@ ensures (n < 0 & \result == -n) | (n >= 0 & \result == n);
     public static int valorAbsoluto(int n) {
         if (n < 0) {
             return -n;
