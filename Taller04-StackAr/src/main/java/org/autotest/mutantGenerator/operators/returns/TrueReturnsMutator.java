@@ -30,6 +30,12 @@ public class TrueReturnsMutator extends MutationOperator {
         List<String> targetTypes = Arrays.asList(
             "boolean"
         );
+
+        // No se deben mutar los valores que ya sean verdaderos
+        if (type.equals("boolean") && op.getReturnedExpression().toString().equals("true")) {
+            return false;
+        }
+
         return targetTypes.contains(type);
     }
 

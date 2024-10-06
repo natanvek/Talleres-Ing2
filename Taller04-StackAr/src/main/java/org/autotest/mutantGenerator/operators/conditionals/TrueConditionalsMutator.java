@@ -21,6 +21,12 @@ public class TrueConditionalsMutator extends MutationOperator {
             return false;
         }
 
+        CtIf op = (CtIf)candidate;
+        // No se debe mutar una condición que ya es true
+        if (op.getCondition().toString().equals("true")) {
+            return false;
+        }
+
         return false;
     }
 

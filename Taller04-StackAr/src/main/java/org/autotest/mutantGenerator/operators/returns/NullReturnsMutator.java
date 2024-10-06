@@ -31,6 +31,12 @@ public class NullReturnsMutator extends MutationOperator {
         List<String> targetTypes = Arrays.asList(
             "java.lang.Object"
         );
+
+        // No se deben mutar los valores que ya sean nulos
+        if (op.getReturnedExpression().toString().equals("null")) {
+            return false;
+        }
+
         return targetTypes.contains(type);
     }
 

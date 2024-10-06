@@ -33,7 +33,17 @@ public class EmptyReturnsMutator extends MutationOperator {
             "java.lang.String",
             "int"
         );
+
+        // No se deben mutar los valores que ya sean vacíos
+        if (type.equals("java.lang.String") && op.getReturnedExpression().toString().equals("\"\"")) {
+            return false;
+        }
+        if (type.equals("int") && op.getReturnedExpression().toString().equals("0")) {
+            return false;
+        }
+
         return targetTypes.contains(type);
+
     }
 
     @Override

@@ -30,6 +30,12 @@ public class FalseReturnsMutator extends MutationOperator {
         List<String> targetTypes = Arrays.asList(
             "boolean"
         );
+
+        // No se deben mutar los valores que ya sean falsos
+        if (type.equals("boolean") && op.getReturnedExpression().toString().equals("false")) {
+            return false;
+        }
+
         return targetTypes.contains(type);
     }
 
