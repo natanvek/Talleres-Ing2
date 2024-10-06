@@ -26,8 +26,15 @@ public class MathMutator extends MutationOperator {
             return false;
         }
 
-        // COMPLETAR
-        return false;
+        CtBinaryOperator op = (CtBinaryOperator)candidate;
+        List<BinaryOperatorKind> targetOperations = Arrays.asList(
+            BinaryOperatorKind.PLUS, // +
+            BinaryOperatorKind.MINUS, // -
+            BinaryOperatorKind.MUL, // *
+            BinaryOperatorKind.DIV, // /
+            BinaryOperatorKind.MOD // %
+        );
+        return targetOperations.contains(op.getKind());
     }
 
     @Override
@@ -37,7 +44,20 @@ public class MathMutator extends MutationOperator {
     }
 
     public BinaryOperatorKind getReplacement(BinaryOperatorKind kind) {
-        // COMPLETAR
+        // NOTA: A falta de mas informacion, se reemplaza la operacion por la operacion inversa.
+
+        switch (kind) {
+            case PLUS:
+                return BinaryOperatorKind.MINUS;
+            case MINUS:
+                return BinaryOperatorKind.PLUS;
+            case MUL:
+                return BinaryOperatorKind.DIV;
+            case DIV:
+                return BinaryOperatorKind.MUL;
+            case MOD:
+                return BinaryOperatorKind.DIV;
+        }
         return null;
     }
 

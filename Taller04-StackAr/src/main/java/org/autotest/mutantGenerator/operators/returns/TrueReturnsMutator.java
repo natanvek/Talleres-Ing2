@@ -24,29 +24,34 @@ public class TrueReturnsMutator extends MutationOperator {
         if (!(candidate instanceof CtReturn)) {
             return false;
         }
-        // COMPLETAR
-        return false;
+
+        CtReturn op = (CtReturn)candidate;
+        String type = getReturnedExpressionType(op);
+        List<String> targetTypes = Arrays.asList(
+            "boolean"
+        );
+        return targetTypes.contains(type);
     }
 
     @Override
     public void process(CtElement candidate) {
-        // COMPLETAR
+        CtReturn op = (CtReturn)candidate;
+        op.setReturnedExpression(getTrueValueForReturnExpression(op));
     }
 
     private static String getReturnedExpressionType(CtReturn op) {
         return op.getReturnedExpression().getType().toString();
     }
 
-    private CtExpression getEmptyValueForReturnExpression(CtReturn op) {
-        // COMPLETAR
-        return null;
+    private CtExpression getTrueValueForReturnExpression(CtReturn op) {
+        return op.getFactory().Code().createLiteral(true);
     }
 
     @Override
     public String describeMutation(CtElement candidate) {
         CtReturn op = (CtReturn)candidate;
         return this.getClass().getSimpleName() + ": Se reemplazó " +
-                op.getReturnedExpression().toString() + " por " + getEmptyValueForReturnExpression(op).toString() +
+                op.getReturnedExpression().toString() + " por " + getTrueValueForReturnExpression(op).toString() +
                 " en la línea " + op.getPosition().getLine() + ".";
     }
 }

@@ -6,6 +6,9 @@ import spoon.reflect.code.CtReturn;
 import spoon.reflect.declaration.CtElement;
 import spoon.reflect.reference.CtTypeReference;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * Operador de mutación basado en https://pitest.org/quickstart/mutators/#NULL_RETURNS
  *
@@ -22,22 +25,27 @@ public class NullReturnsMutator extends MutationOperator {
         if (!(candidate instanceof CtReturn)) {
             return false;
         }
-        // COMPLETAR
-        return false;
+
+        CtReturn op = (CtReturn)candidate;
+        String type = getReturnedExpressionType(op);
+        List<String> targetTypes = Arrays.asList(
+            "java.lang.Object"
+        );
+        return targetTypes.contains(type);
     }
 
     @Override
     public void process(CtElement candidate) {
-        // COMPLETAR
+        CtReturn op = (CtReturn)candidate;
+        op.setReturnedExpression(getNullValueForReturnExpression(op));
     }
 
-    private static CtTypeReference getReturnedExpressionType(CtReturn op) {
-        return op.getReturnedExpression().getType();
+    private static String getReturnedExpressionType(CtReturn op) {
+        return op.getReturnedExpression().getType().toString();
     }
 
     private CtExpression getNullValueForReturnExpression(CtReturn op) {
-        // COMPLETAR
-        return null;
+        return op.getFactory().Code().createLiteral(null);
     }
 
     @Override

@@ -16,13 +16,18 @@ public class TrueConditionalsMutator extends MutationOperator {
         if (!super.isToBeProcessed(candidate)) {
             return false;
         }
-        // COMPLETAR
+
+        if (!(candidate instanceof CtIf)) {
+            return false;
+        }
+
         return false;
     }
 
     @Override
     public void process(CtElement candidate) {
-        // COMPLETAR
+        CtIf op = (CtIf)candidate;
+        op.setCondition(op.getFactory().Code().createLiteral(true));
     }
 
     @Override
