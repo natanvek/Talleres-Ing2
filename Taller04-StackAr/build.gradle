@@ -31,6 +31,7 @@ jacocoTestReport {
     reports {
         xml.required = true
         csv.required = true
+        html.required = true
     }
 }
 
@@ -102,6 +103,7 @@ task randoop(type: JavaExec, dependsOn: jar) {
 
     dependsOn cleanGeneratedTests
     finalizedBy fixTestsImport
+    finalizedBy test
 }
 
 task randoopWithMutationAnalysis(type: JavaExec, dependsOn: jar) {

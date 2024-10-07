@@ -35,7 +35,24 @@ public class StackAr extends Stack {
 	@CheckRep
 	public boolean repOK() {
 		try {
-			// COMPLETAR
+
+			if (elems == null) {
+				return false;
+			}
+
+			if (readIndex < -1) {
+				return false;
+			}
+
+			if (readIndex >= elems.length) {
+				return false;
+			}
+
+			for (int i = readIndex + 1; i < elems.length; i++) {
+				if (elems[i] != null) {
+					return false;
+				}
+			}
 
 			return true;
 		} catch (Exception | Error e) {
@@ -70,6 +87,7 @@ public class StackAr extends Stack {
 			throw new IllegalStateException();
 		}
 		Object rv = this.top();
+		this.elems[readIndex] = null;
 		readIndex--;
 		return rv;
 	}
