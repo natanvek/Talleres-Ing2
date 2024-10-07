@@ -2,29 +2,29 @@
 
 ## Ejercicio 1
 
-a. Se generaron 61 mutantes. ==corregir==
+a. Se generaron 55 mutantes.
 
-b. El que más generó es `FalseConditionalsMutator`, con un total de 10 mutaciones. Porque dicho operador de mutación encontró la mayor cantidad de candidatos a mutar (i.e. `return X` donde `X` no es `false`). ==corregir==
+b. El que más generó es `FalseConditionalsMutator`, con un total de 10 mutaciones. Porque dicho operador de mutación encontró la mayor cantidad de candidatos a mutar (i.e. `return X` donde `X` no es `false`).
   
-c. El que menos generó es `NullReturnsMutator`, con un total de 2 mutaciones. Porque solo se habrán encontrado dos instancias de `return` para un objeto.  ==corregir==
+c. El que menos generó es `NullReturnsMutator`, con un total de 2 mutaciones. Porque solo se habrán encontrado dos instancias de `return` para un objeto.
 
 
 ## Ejercicio 2
 
 - StackTests1
-	- Mutantes vivos: 47 ==corregir==
-	- Mutantes muertos: 14 ==corregir==
-	- Mutation score: 22% ==corregir==
+	- Mutantes vivos: 41
+	- Mutantes muertos: 14
+	- Mutation score: 25%
 	
 - StackTests2
-	- Mutantes vivos: 33 ==corregir==
-	- Mutantes muertos: 28 ==corregir==
-	- Mutation score: 45% ==corregir==
+	- Mutantes vivos: 27
+	- Mutantes muertos: 28
+	- Mutation score: 50%
 	
 - StackTests3
-	- Mutantes vivos: 33 ==corregir==
-	- Mutantes muertos: 28 ==corregir==
-	- Mutation score: 45% ==corregir==
+	- Mutantes vivos: 27
+	- Mutantes muertos: 28
+	- Mutation score: 50%
 	
 
 ## Ejercicio 3
