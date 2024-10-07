@@ -43,3 +43,20 @@ c.
 d. El instruction coverage promedio es 59%.
 
 e. El peor instruction coverage para una clase mutada es 5%. Es la mutación donde 10 se reemplaza por -1 en la linea 8, lo que significa que intenta inicializar un stack con `capacity` menor a 0, que inmediatamente resulta en un `IllegalArgumentException` y no permite cubrir las demás instrucciones.
+
+## Ejercicio 4
+
+a. Produjo 289 tests.
+b. Pasó todos los tests.
+c. No pudimos encontrar los reportes de JaCoCo siguiendo las instrucciones del enunciado.
+
+## Ejercicio 5
+
+a. Los tests mostraban que la implementación de StackAr no cumplía con el invariante: $\forall i > readIndex, elems_i = null$. Esto se puede solucionar asegurándose de que los elementos que se popean se vuelven null en el arreglo interno.
+
+b. No pudimos encontrar los reportes de JaCoCo siguiendo las instrucciones del enunciado.
+
+
+## Ejercicio 6
+
+Mutation score obtenido: 100%
