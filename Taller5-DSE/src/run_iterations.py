@@ -4,7 +4,7 @@ import sys
 from src.utils import get_result_and_model
 
 if __name__ == '__main__':
-    root_folder = "parte_2/ejercicio_5"
+    root_folder = "src/parte_2/ejercicio_5"
 
     if len(sys.argv) > 1:
         root_folder = sys.argv[1]

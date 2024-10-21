@@ -1,0 +1,31 @@
+(declare-const k Real)
+
+(declare-const i_0 Int)
+(assert (= i_0 0))
+(declare-const i_1 Int)
+(assert (= i_1 1))
+(declare-const i_2 Int)
+(assert (= i_2 2))
+(declare-const i_3 Int)
+(assert (= i_3 3))
+
+(declare-const C1_0 Bool)
+(assert (= C1_0 (< i_0 3)))
+(declare-const C1_1 Bool)
+(assert (= C1_1 (< i_1 3)))
+(declare-const C1_2 Bool)
+(assert (= C1_2 (< i_2 3)))
+(declare-const C1_3 Bool)
+(assert (= C1_3 (< i_3 3)))
+
+(declare-const C2_0 Bool)
+(assert (= C2_0 (= (+ 5.0 k) 0)))
+(declare-const C2_1 Bool)
+(assert (= C2_1 (= (+ 1.0 k) 0)))
+(declare-const C2_2 Bool)
+(assert (= C2_2 (= (+ 3.0 k) 0)))
+
+
+(assert (and C1_0 C2_0 C1_1 (not C2_1) C1_2 (not C2_2) (not C1_3)))
+(check-sat)
+(get-model)
