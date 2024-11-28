@@ -58,7 +58,6 @@ class GeneticAlgorithm():
         return mutations
 
     def covered_all_branches(self, fitness_individual: float) -> bool:
-        # return abs(fitness_individual) < 1e-9
         return fitness_individual == 0
 
     def run(self):
@@ -67,12 +66,11 @@ class GeneticAlgorithm():
         fitness_by_individual = evaluate_population(population)
 
         # Imprimir el mejor valor de fitness encontrado
-        self.best_individual = max(fitness_by_individual, key = lambda x: fitness_by_individual[x])
-        self.fitness_best_individual = fitness_by_individual[self.best_individual]
+        self.best_individual_idx = min(fitness_by_individual, key=fitness_by_individual.get)
+        self.fitness_best_individual = fitness_by_individual[self.best_individual_idx]
+        
+        
         print(self.fitness_best_individual)
-
-        # Continuar mientras la cantidad de generaciones es menor que 1000
-        # y no haya ningun individuo que cubra todos los objetivos
 
         while self.generation < 1000 and not self.covered_all_branches(self.fitness_best_individual):
 
@@ -87,8 +85,12 @@ class GeneticAlgorithm():
 
             # Evaluar la nueva poblacion e imprimir el mejor valor de fitness
             fitness_by_individual = evaluate_population(population)
-            self.best_individual = max(fitness_by_individual, key = lambda x: fitness_by_individual[x])
-            self.fitness_best_individual = fitness_by_individual[self.best_individual]
+            
+            self.best_individual_idx = min(fitness_by_individual, key=fitness_by_individual.get)
+            self.fitness_best_individual = fitness_by_individual[self.best_individual_idx]
+            print(self.fitness_best_individual)
+
 
         # retornar el mejor individuo de la ultima generacion
-        return self.best_individual
+
+        return population[self.best_individual_idx]

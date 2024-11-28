@@ -9,6 +9,6 @@ def selection(fitness_by_individual: dict, tournament_size: int) -> Tuple[str, f
     """
 
     participantes = sample(list(fitness_by_individual.keys()), tournament_size)
-    winner = max(participantes, key = lambda x: fitness_by_individual[x])
+    winner = min(participantes, key = lambda x: fitness_by_individual[x])
     
     return winner, fitness_by_individual[winner]

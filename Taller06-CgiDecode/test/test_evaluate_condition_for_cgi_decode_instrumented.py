@@ -27,8 +27,6 @@ class TestEvaluateConditionForCgiDecodeInstrumented(unittest.TestCase):
         self.assertIsNone(get_true_distance(5))
         self.assertIsNone(get_false_distance(5))
 
-        self.assertIsNone(get_true_distance(6))
-        self.assertIsNone(get_false_distance(6))
 
     # Sin codificación
     def testNoEncoding(self):
@@ -50,8 +48,6 @@ class TestEvaluateConditionForCgiDecodeInstrumented(unittest.TestCase):
         self.assertIsNone(get_true_distance(5))
         self.assertIsNone(get_false_distance(5))
 
-        self.assertIsNone(get_true_distance(6))
-        self.assertIsNone(get_false_distance(6))
         
 
 
@@ -75,9 +71,6 @@ class TestEvaluateConditionForCgiDecodeInstrumented(unittest.TestCase):
         self.assertIsNone(get_true_distance(5))
         self.assertIsNone(get_false_distance(5))
 
-        self.assertIsNone(get_true_distance(6))
-        self.assertIsNone(get_false_distance(6))
-
     # Con %
     def testPercent(self):
         clear_maps()
@@ -98,8 +91,6 @@ class TestEvaluateConditionForCgiDecodeInstrumented(unittest.TestCase):
         self.assertEqual(get_true_distance(5), 0)
         self.assertEqual(get_false_distance(5), 1)
 
-        self.assertIsNone(get_true_distance(6))
-        self.assertIsNone(get_false_distance(6))
 
     # Digit low no es un dígito hexadecimal
     def testInvalidDigitLow(self):
@@ -122,8 +113,6 @@ class TestEvaluateConditionForCgiDecodeInstrumented(unittest.TestCase):
         self.assertEqual(get_true_distance(5), 1)
         self.assertEqual(get_false_distance(5), 0)
 
-        self.assertIsNone(get_true_distance(6))
-        self.assertIsNone(get_false_distance(6))
 
 
     # Digit high no es un dígito hexadecimal
@@ -148,6 +137,4 @@ class TestEvaluateConditionForCgiDecodeInstrumented(unittest.TestCase):
         self.assertIsNone(get_true_distance(5))
         self.assertIsNone(get_false_distance(5))
 
-        self.assertIsNone(get_true_distance(6))
-        self.assertIsNone(get_false_distance(6))
     

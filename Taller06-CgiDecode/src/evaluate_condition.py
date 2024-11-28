@@ -73,7 +73,7 @@ def evaluate_condition(condition_num: int, op: str, lhs: Union[str, int], rhs: U
     match op:
         case "Eq": 
             if dif == 0 : 
-                d_false = K 
+                d_false = K
             else :
                 d_true = dif
         case "Ne":
@@ -98,9 +98,9 @@ def evaluate_condition(condition_num: int, op: str, lhs: Union[str, int], rhs: U
                 d_true = dif
         case "Ge":
             if(lhs >= rhs) :
-                d_false = dif + K
+                d_false = dif
             else : 
-                d_true = dif
+                d_true = dif + K
         case _:
             raise ValueError("Operación no válida.")
 
