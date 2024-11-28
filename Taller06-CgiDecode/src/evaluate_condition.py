@@ -53,12 +53,14 @@ def evaluate_condition(condition_num: int, op: str, lhs: Union[str, int], rhs: U
 
     K = 1
 
+    # Caso diccionario
     if isinstance(lhs, str) and len(lhs) == 1 and isinstance(rhs, dict) and op == "In":
         d_true = min((abs(ord(lhs) - ord(key)) for key in rhs.keys()), default=sys.maxsize)
         d_false = 0 if d_true > 0 else K
         update_maps(condition_num, d_true, d_false)
         return d_true == 0
 
+    # Caso caracteres
     if isinstance(lhs, str) and len(lhs) == 1 and isinstance(rhs, str) and len(rhs) == 1:
         lhs = ord(lhs)
         rhs = ord(rhs)
@@ -73,12 +75,12 @@ def evaluate_condition(condition_num: int, op: str, lhs: Union[str, int], rhs: U
             if dif == 0 : 
                 d_false = K 
             else :
-                d_true = K
+                d_true = dif
         case "Ne":
             if dif == 0 : 
-                d_false = K
-            else :
                 d_true = K
+            else :
+                d_false = dif
         case "Lt":
             if(lhs < rhs) :
                 d_false = dif
