@@ -4,9 +4,41 @@ from src.evaluate_condition import evaluate_condition
 
 
 class TestEvaluateCondition(unittest.TestCase):
-    def testExample(self):
-        # TODO COMPLETAR
-        evaluate_condition(1, "Eq", 10, 20)
-        self.assertTrue(True)
-        self.assertFalse(False)
-        self.assertEqual(True, False)
+
+    # Operadores
+
+    def test_eq(self):
+        self.assertTrue(evaluate_condition(1, 'Eq', 10, 10))
+    
+    def test_neq(self):
+        self.assertTrue(evaluate_condition(2, 'Ne', 'a', 'b'))
+
+    def test_gt(self):
+        self.assertTrue(evaluate_condition(3, 'Gt', 'b', 'a'))
+
+    def test_ge(self):
+        self.assertTrue(evaluate_condition(4, 'Ge', 'b', 'a'))
+
+    def test_lt(self):
+        self.assertTrue(evaluate_condition(5, 'Lt', 'a', 'b'))
+
+    def test_le(self):
+        self.assertTrue(evaluate_condition(6, 'Le', 'a', 'b'))
+
+    def test_in(self):
+        self.assertTrue(evaluate_condition(7, 'In', 10, {10: 1, 2: 2}))
+
+
+    # Caraceteres
+
+    def test_eq_char(self):
+        self.assertTrue(evaluate_condition(8, 'Eq', 'a', 'a'))
+
+    def test_in_char(self):
+        self.assertTrue(evaluate_condition(9, 'In', 'a', {'a': 1, 'b': 2}))
+
+    
+    # Lista vacía
+
+    def test_eq_empty_list(self):
+        self.assertFalse(evaluate_condition(10, 'In', 'a', []))
