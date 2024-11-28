@@ -86,8 +86,8 @@ def evaluate_condition(condition_num: int, op: str, lhs: Union[str, Dict], rhs: 
         d_false = 0 if not result else (lhs - rhs)
     elif op == "Ge":
         result = lhs >= rhs
-        d_true = 0 if result else (rhs - lhs) + K
-        d_false = 0 if not result else (lhs - rhs)
+        d_true = 0 if result else (rhs - lhs)
+        d_false = 0 if not result else (lhs - rhs) + K
     elif op == "In" and isinstance(rhs, list):
         result = lhs in rhs
         d_true = sys.maxsize if not rhs else min(abs(lhs - x) for x in rhs)
