@@ -21,5 +21,5 @@ fi
 # venv/bin/python -m unittest discover
 
 # The following line runs the unit test cases with coverage, and generates a coverage report
-venv/bin/coverage run --branch -m unittest $TARGET
-venv/bin/coverage html
+coverage run --branch -m unittest $TARGET
+coverage html

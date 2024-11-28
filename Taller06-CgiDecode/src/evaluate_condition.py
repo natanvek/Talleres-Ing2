@@ -48,52 +48,59 @@ def has_reached_condition(condition_num: int) -> bool:
     global distances_true, distances_false
     return condition_num in distances_true.keys() or condition_num in distances_false.keys()
 
-def evaluate_condition(condition_num: int, op: str, lhs: Union[str, Dict], rhs: Union[str, Dict]) -> bool:
+def evaluate_condition(condition_num: int, op: str, lhs: Union[str, int], rhs: Union[str, int, Dict]) -> bool:
     global distances_true, distances_false
 
     K = 1
 
-    # Convertimos caracteres a su valor ordinal
-    if isinstance(lhs, str) and len(lhs) == 1:
+    if isinstance(lhs, str) and len(lhs) == 1 and isinstance(rhs, dict) and op == "In":
+        d_true = min((abs(ord(lhs) - ord(key)) for key in rhs.keys()), default=sys.maxsize)
+        d_false = 0 if d_true > 0 else K
+        update_maps(condition_num, d_true, d_false)
+        return d_true == 0
+
+    if isinstance(lhs, str) and len(lhs) == 1 and isinstance(rhs, str) and len(rhs) == 1:
         lhs = ord(lhs)
-    if isinstance(rhs, str) and len(rhs) == 1:
         rhs = ord(rhs)
-    elif isinstance(rhs, dict):
-        # Convertimos diccionario a lista de claves
-        rhs = list(rhs.keys())
-        rhs = [ord(k) if isinstance(k, str) and len(k) == 1 else k for k in rhs]
+    elif not isinstance(lhs, int) or not isinstance(rhs, int):
+        raise ValueError("Operación no válida.")
 
     result = False
-    if op == "Eq": 
-        result = lhs == rhs
-        d_true = abs(lhs - rhs)
-        d_false = 0 if not result else K
-    elif op == "Ne":
-        result = lhs != rhs
-        d_true = 0 if result else K
-        d_false = abs(lhs - rhs)
-    elif op == "Lt":
-        result = lhs < rhs
-        d_true = 0 if result else (lhs - rhs) + K
-        d_false = 0 if not result else (rhs - lhs)
-    elif op == "Le":
-        result = lhs <= rhs
-        d_true = 0 if result else (lhs - rhs)
-        d_false = 0 if not result else (rhs - lhs) + K
-    elif op == "Gt":
-        result = lhs > rhs
-        d_true = 0 if result else (rhs - lhs) + K
-        d_false = 0 if not result else (lhs - rhs)
-    elif op == "Ge":
-        result = lhs >= rhs
-        d_true = 0 if result else (rhs - lhs)
-        d_false = 0 if not result else (lhs - rhs) + K
-    elif op == "In" and isinstance(rhs, list):
-        result = lhs in rhs
-        d_true = sys.maxsize if not rhs else min(abs(lhs - x) for x in rhs)
-        d_false = 0 if result else K
-    else:
-        raise ValueError("Operación no válida.")
+    dif = abs(lhs - rhs)
+    d_true = 0, d_false = 0
+    match op:
+        case "Eq": 
+            if dif == 0 : 
+                d_false = K 
+            else :
+                d_true = K
+        case "Ne":
+            if dif == 0 : 
+                d_false = K
+            else :
+                d_true = K
+        case "Lt":
+            if(lhs < rhs) :
+                d_false = dif
+            else : 
+                d_true = dif + K
+        case "Le":
+            if(lhs <= rhs) :
+                d_false = dif + K
+            else : 
+                d_true = dif
+        case "Gt":
+            if(lhs > rhs) :
+                d_false = dif + K
+            else : 
+                d_true = dif
+        case "Ge":
+            if(lhs >= rhs) :
+                d_false = dif + K
+            else : 
+                d_true = dif
+        case _:
+            raise ValueError("Operación no válida.")
 
     update_maps(condition_num, d_true, d_false)
 

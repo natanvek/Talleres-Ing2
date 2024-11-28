@@ -26,8 +26,7 @@ class TestEvaluateCondition(unittest.TestCase):
         self.assertTrue(evaluate_condition(6, 'Le', 'a', 'b'))
 
     def test_in(self):
-        self.assertTrue(evaluate_condition(7, 'In', 10, {10: 1, 2: 2}))
-
+        self.assertTrue(evaluate_condition(7, 'In', "k", {"k": 1, "j": 2}))
 
     # Caracteres
 
@@ -41,4 +40,13 @@ class TestEvaluateCondition(unittest.TestCase):
     # Lista vacía
 
     def test_eq_empty_list(self):
-        self.assertFalse(evaluate_condition(10, 'In', 'a', []))
+        self.assertFalse(evaluate_condition(10, 'In', 'a', {}))
+
+    def test_invalid_operation(self):
+        self.assertFalse(evaluate_condition(10, 'In', 'a', {}))
+
+        with self.assertRaises(ValueError):
+            evaluate_condition(1, "In", 5, { "5": "b" })
+
+        with self.assertRaises(ValueError):
+            evaluate_condition(1, "Eqq", 5, 5)
