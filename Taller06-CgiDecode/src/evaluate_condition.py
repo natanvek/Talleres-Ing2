@@ -1,6 +1,8 @@
 import sys
 from typing import Dict, Union
 
+K = 1
+
 # Inicializar mappings globales
 distances_true: Dict[int, int] = {}
 distances_false: Dict[int, int] = {}
@@ -64,32 +66,32 @@ def evaluate_condition(condition_num: int, op: str, lhs: Union[str, Dict], rhs: 
     result = False
     if op == "Eq": 
         result = lhs == rhs
-        d_true = abs(lhs - rhs) if result else 0
-        d_false = 0 if result else abs(lhs - rhs)
+        d_true = abs(lhs - rhs)
+        d_false = 0 if result else K
     elif op == "Ne":
         result = lhs != rhs
-        d_true = 0 if result else abs(lhs - rhs)
-        d_false = abs(lhs - rhs) if result else 0
+        d_true = 0 if result else K
+        d_false = abs(lhs - rhs)
     elif op == "Lt":
         result = lhs < rhs
-        d_true = max(0, rhs - lhs - 1) if result else 0
-        d_false = max(0, lhs - rhs + 1) if not result else 0
+        d_true = 0 if result else (lhs - rhs) + K
+        d_false = 0 if not result else (rhs - lhs)
     elif op == "Le":
         result = lhs <= rhs
-        d_true = max(0, rhs - lhs) if result else 0
-        d_false = max(0, lhs - rhs + 1) if not result else 0
+        d_true = 0 if result else (lhs - rhs)
+        d_false = 0 if not result else (rhs - lhs) + K
     elif op == "Gt":
         result = lhs > rhs
-        d_true = max(0, lhs - rhs - 1) if result else 0
-        d_false = max(0, rhs - lhs + 1) if not result else 0
+        d_true = 0 if result else (rhs - lhs) + K
+        d_false = 0 if not result else (lhs - rhs)
     elif op == "Ge":
         result = lhs >= rhs
-        d_true = max(0, lhs - rhs) if result else 0
-        d_false = max(0, rhs - lhs + 1) if not result else 0
-    elif op == "In":
-        result = lhs in rhs if isinstance(rhs, list) else False
-        d_true = sys.maxsize if rhs == [] else min(abs(lhs - x) for x in rhs)
-        d_false = 0 if result else 1
+        d_true = 0 if result else (rhs - lhs) + K
+        d_false = 0 if not result else (lhs - rhs)
+    elif op == "In" and isinstance(rhs, list):
+        result = lhs in rhs
+        d_true = sys.maxsize if not rhs else min(abs(lhs - x) for x in rhs)
+        d_false = 0 if result else K
     else:
         raise ValueError("Operación no válida.")
 
