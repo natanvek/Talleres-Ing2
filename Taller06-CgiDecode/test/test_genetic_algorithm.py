@@ -7,16 +7,39 @@ from src.genetic_algorithm import GeneticAlgorithm
 
 class TestGeneticAlgorithm(unittest.TestCase):
     def test1(self):
-        # TODO COMPLETAR
         seed(1)
         ga = GeneticAlgorithm()
         result = ga.run()
-        self.assertEqual(True, False)
+
+        # Cantidad de generaciones realizada
+        self.assertEquals(ga.get_generation(), 1000)
+
+        # El branch coverage logrado al final del algoritmo por el mejor individuo
+        self.assertAlmostEquals(result, 1.0)
+
 
     def test2(self):
-        # TODO COMPLETAR
-        pass
+        seed(2)
+        ga = GeneticAlgorithm()
+        result = ga.run()
+
+        # Cantidad de generaciones realizada
+        self.assertEquals(ga.get_generation(), 1000)
+
+        # El branch coverage logrado al final del algoritmo por el mejor individuo
+        self.assertAlmostEquals(result, 1.0)
 
     def test3(self):
-        # TODO COMPLETAR
-        pass
+        seed(3)
+        ga = GeneticAlgorithm()
+        result = ga.run()
+
+        # Cantidad de generaciones realizada
+        self.assertEquals(ga.get_generation(), 1000)
+
+        # El branch coverage logrado al final del algoritmo por el mejor individuo
+        self.assertAlmostEquals(result, 1.0)
+
+
+
+
