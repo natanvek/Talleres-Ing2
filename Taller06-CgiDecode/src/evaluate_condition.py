@@ -1,8 +1,6 @@
 import sys
 from typing import Dict, Union
 
-K = 1
-
 # Inicializar mappings globales
 distances_true: Dict[int, int] = {}
 distances_false: Dict[int, int] = {}
@@ -53,6 +51,8 @@ def has_reached_condition(condition_num: int) -> bool:
 def evaluate_condition(condition_num: int, op: str, lhs: Union[str, Dict], rhs: Union[str, Dict]) -> bool:
     global distances_true, distances_false
 
+    K = 1
+
     # Convertimos caracteres a su valor ordinal
     if isinstance(lhs, str) and len(lhs) == 1:
         lhs = ord(lhs)
@@ -67,7 +67,7 @@ def evaluate_condition(condition_num: int, op: str, lhs: Union[str, Dict], rhs: 
     if op == "Eq": 
         result = lhs == rhs
         d_true = abs(lhs - rhs)
-        d_false = 0 if result else K
+        d_false = 0 if not result else K
     elif op == "Ne":
         result = lhs != rhs
         d_true = 0 if result else K

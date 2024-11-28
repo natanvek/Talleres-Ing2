@@ -29,7 +29,7 @@ class TestEvaluateCondition(unittest.TestCase):
         self.assertTrue(evaluate_condition(7, 'In', 10, {10: 1, 2: 2}))
 
 
-    # Caraceteres
+    # Caracteres
 
     def test_eq_char(self):
         self.assertTrue(evaluate_condition(8, 'Eq', 'a', 'a'))
