@@ -67,9 +67,9 @@ def evaluate_condition(condition_num: int, op: str, lhs: Union[str, int], rhs: U
     elif not isinstance(lhs, int) or not isinstance(rhs, int):
         raise ValueError("Operación no válida.")
 
-    result = False
     dif = abs(lhs - rhs)
-    d_true = 0, d_false = 0
+    d_true = 0
+    d_false = 0
     match op:
         case "Eq": 
             if dif == 0 : 
@@ -106,5 +106,5 @@ def evaluate_condition(condition_num: int, op: str, lhs: Union[str, int], rhs: U
 
     update_maps(condition_num, d_true, d_false)
 
-    return result
+    return d_true == 0
     

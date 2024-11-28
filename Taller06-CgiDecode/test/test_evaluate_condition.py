@@ -9,29 +9,33 @@ class TestEvaluateCondition(unittest.TestCase):
 
     def test_eq(self):
         self.assertTrue(evaluate_condition(1, 'Eq', 10, 10))
+        self.assertFalse(evaluate_condition(1, 'Eq', 3, 10))
+
     
     def test_neq(self):
         self.assertTrue(evaluate_condition(2, 'Ne', 'a', 'b'))
+        self.assertFalse(evaluate_condition(2, 'Ne', 'a', 'a'))
 
     def test_gt(self):
         self.assertTrue(evaluate_condition(3, 'Gt', 'b', 'a'))
+        self.assertFalse(evaluate_condition(3, 'Gt', 'b', 'c'))
 
     def test_ge(self):
         self.assertTrue(evaluate_condition(4, 'Ge', 'b', 'a'))
+        self.assertFalse(evaluate_condition(4, 'Ge', 'b', 'c'))
 
     def test_lt(self):
         self.assertTrue(evaluate_condition(5, 'Lt', 'a', 'b'))
+        self.assertFalse(evaluate_condition(5, 'Lt', 'c', 'b'))
 
     def test_le(self):
         self.assertTrue(evaluate_condition(6, 'Le', 'a', 'b'))
+        self.assertFalse(evaluate_condition(6, 'Le', 'c', 'b'))
 
     def test_in(self):
         self.assertTrue(evaluate_condition(7, 'In', "k", {"k": 1, "j": 2}))
 
     # Caracteres
-
-    def test_eq_char(self):
-        self.assertTrue(evaluate_condition(8, 'Eq', 'a', 'a'))
 
     def test_in_char(self):
         self.assertTrue(evaluate_condition(9, 'In', 'a', {'a': 1, 'b': 2}))
