@@ -8,6 +8,9 @@ def distancia_palabra_operador(palabra, operador):
 
 class TestEvaluateConditionForCgiDecodeInstrumented(unittest.TestCase):
 
+    # En cada Test analizamos el diccionario de distancias comprobando que cada distancia
+    # esté correctamente calculada luego de ejecutar cgi_decode_instrumented
+
     # Palabra vacía
     def testEmpty(self):
         clear_maps()

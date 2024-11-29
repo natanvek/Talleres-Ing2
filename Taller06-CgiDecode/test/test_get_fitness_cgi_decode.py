@@ -6,6 +6,8 @@ from src.evaluate_condition import clear_maps
 
 class TestGetFitnessCgiDecode(unittest.TestCase):
 
+    # Definimos y comprobamos los test provistos por la cátedra
+
     def tearDown(self) -> None:
         clear_maps()
         return super().tearDown()

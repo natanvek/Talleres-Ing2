@@ -5,8 +5,7 @@ from src.evaluate_condition import evaluate_condition
 
 class TestEvaluateCondition(unittest.TestCase):
 
-    # Operadores
-
+    # Evaluamos la rama True y la rama False de cada operador programado en evaluate_conditions.py
     def test_eq(self):
         self.assertTrue(evaluate_condition(1, 'Eq', 10, 10))
         self.assertFalse(evaluate_condition(1, 'Eq', 3, 10))
@@ -35,13 +34,9 @@ class TestEvaluateCondition(unittest.TestCase):
     def test_in(self):
         self.assertTrue(evaluate_condition(7, 'In', "k", {"k": 1, "j": 2}))
 
-    # Caracteres
-
     def test_in_char(self):
         self.assertTrue(evaluate_condition(9, 'In', 'a', {'a': 1, 'b': 2}))
 
-    
-    # Lista vacía
 
     def test_eq_empty_list(self):
         self.assertFalse(evaluate_condition(10, 'In', 'a', {}))
