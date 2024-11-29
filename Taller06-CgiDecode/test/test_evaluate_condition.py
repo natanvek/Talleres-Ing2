@@ -6,10 +6,10 @@ from src.evaluate_condition import evaluate_condition
 class TestEvaluateCondition(unittest.TestCase):
 
     # Evaluamos la rama True y la rama False de cada operador programado en evaluate_conditions.py
+
     def test_eq(self):
         self.assertTrue(evaluate_condition(1, 'Eq', 10, 10))
         self.assertFalse(evaluate_condition(1, 'Eq', 3, 10))
-
     
     def test_neq(self):
         self.assertTrue(evaluate_condition(2, 'Ne', 'a', 'b'))

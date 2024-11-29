@@ -6,6 +6,7 @@ from src.cgi_decode_instrumented import cgi_decode_instrumented
 def get_fitness_cgi_decode(test_suite: List[str]) -> float:
     # Borro la información de branch coverage de ejecuciones anteriores
     # Recuerden que los diccionarios true_distances y false_distances son globales
+    
     clear_maps()
 
     fitness = 0

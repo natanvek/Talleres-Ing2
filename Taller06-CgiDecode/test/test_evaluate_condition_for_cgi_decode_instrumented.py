@@ -51,8 +51,6 @@ class TestEvaluateConditionForCgiDecodeInstrumented(unittest.TestCase):
         self.assertIsNone(get_true_distance(5))
         self.assertIsNone(get_false_distance(5))
 
-        
-
 
     # Con +
     def testPlus(self):

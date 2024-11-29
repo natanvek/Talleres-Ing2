@@ -28,13 +28,8 @@ class TestGeneticAlgorithm(unittest.TestCase):
         ga = GeneticAlgorithm()
         result = ga.run()
 
-        # Cantidad de generaciones realizada
         self.assertEqual(ga.get_generation(), 3)
         self.assertAlmostEqual(branch_coverage(result), 1.0)
-
-        # El branch coverage logrado al final del algoritmo por el mejor individuo
-
-        
 
 
     def test2(self):
@@ -42,25 +37,16 @@ class TestGeneticAlgorithm(unittest.TestCase):
         ga = GeneticAlgorithm()
         result = ga.run()
 
-        # Cantidad de generaciones realizada
         self.assertEqual(ga.get_generation(), 4)
         self.assertAlmostEqual(branch_coverage(result), 1.0)
-
-        
-        # El branch coverage logrado al final del algoritmo por el mejor individuo
-        # self.assertAlmostEqual(result, 1.0)
 
     def test3(self):
         seed(3)
         ga = GeneticAlgorithm()
         result = ga.run()
 
-        # Cantidad de generaciones realizada
         self.assertEqual(ga.get_generation(), 3)
         self.assertAlmostEqual(branch_coverage(result), 1.0)
-
-        # El branch coverage logrado al final del algoritmo por el mejor individuo
-        # self.assertAlmostEqual(result, 1.0)
 
 
 

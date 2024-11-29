@@ -53,6 +53,7 @@ def modify_test_case(individual: List[str]) -> List[str]:
 
     index = choice(range(len(individual)))
 
+    # Se eligan las opciones que pueden ser consideradas
     choices = []
     if len(individual[index]) > 1:
         choices.append("remove")
@@ -60,6 +61,8 @@ def modify_test_case(individual: List[str]) -> List[str]:
         choices.append("add")
     if len(individual[index]) > 0:
         choices.append("modify")
+
+    # Elegimos aleatoriamente
     tipo = choice(choices)
 
     if tipo == "add":
@@ -74,6 +77,7 @@ def modify_test_case(individual: List[str]) -> List[str]:
 
 def mutate(individual: List[str]) -> List[str]:
 
+    # Se eligan las opciones que pueden ser consideradas
     choices = []
     if len(individual) > 1:
         choices.append("remove")
@@ -81,6 +85,8 @@ def mutate(individual: List[str]) -> List[str]:
         choices.append("add")
     if len(individual) > 0:
         choices.append("modify")
+
+    # Elegimos aleatoriamente
     tipo = choice(choices)
 
     if tipo == "add":
